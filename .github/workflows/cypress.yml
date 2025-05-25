@@ -18,5 +18,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fail if test contains "it.only" or "describe.only"
+        run: |
+          if grep -r --include=\*.{js,ts} -E '\b(it|describe)\.only' cypress/e2e; then
+            echo "🚫 Found .only in tests. Please remove it before merging."
+            exit 1
+          fi
+
+
       - name: Run Cypress tests headlessly
         run: npx cypress run
