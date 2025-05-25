@@ -1,4 +1,4 @@
-# playground
+
 Here’s a clean and complete that documents your Cypress project and explains how to set up GitHub Actions CI for it:
 
 ---
@@ -12,7 +12,7 @@ This is a simple Cypress-based end-to-end (E2E) testing project with GitHub Acti
 
 ```
 
-playground/
+project folder/
 ├── cypress/                # Cypress tests
 ├── cypress.config.js       # Cypress configuration
 ├── .github/
