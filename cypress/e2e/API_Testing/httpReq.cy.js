@@ -48,7 +48,7 @@ describe("Http requests", () => {
     );
   });
 
-  it.only("should make a PUT request using json object", () => {
+  it("should make a PUT request using json object", () => {
     let username = Math.random().toString(36).substring(7);
     let users = {
         title: username,
@@ -67,7 +67,7 @@ describe("Http requests", () => {
       });
     
   });
-  it.only("should make a PUT request using fixture file", () => {
+  it("should make a PUT request using fixture file", () => {
     cy.fixture("users").then((users) => {
       console.log(users[0]);
 
