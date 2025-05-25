@@ -1,0 +1,242 @@
+---
+
+ 🚀 Postman API Fundamentals – Student Expert Certification
+
+https://badgr.com/public/assertions/d8nxCA_7SiiILWLrlMm5og
+ https://verify.skilljar.com/c/dmxmhk66kamq
+
+ 📘 Course Overview
+
+* Introduction to APIs and Postman
+* Hands-on practice using a library API
+* Final skill check to assess knowledge
+
+ ✅ By the end, you’ll:
+
+* Understand key API concepts
+* Be confident using Postman
+* Be ready to work with APIs in real-world projects
+
+---
+
+ 🤖 What Are APIs?
+
+> API = Application Programming Interface
+> A contract that lets code talk to other code.
+
+🔗 APIs connect apps, devices, and services — they’re the building blocks of modern software.
+
+ 🍽️ API as a Digital Restaurant
+
+| Role   | Analogy        | Description                          |
+| ------ | -------------- | ------------------------------------ |
+| Client | 🧑‍💻 Customer    | Sends a request                      |
+| API    | 🧑‍🍳 Waiter      | Delivers request to the server       |
+| Server | 👨‍🍳 Kitchen     | Processes request & sends a response |
+
+---
+
+ 🧩 Types of APIs
+
+ 🔌 Hardware APIs
+
+🖼 Interface between software and physical devices
+💡 Example: Camera access from an app
+
+ 📚 Software Library APIs
+
+📦 Use code from other codebases
+💡 Example: Formatting dates using Moment.js
+
+ 🌐 Web APIs
+
+🌍 Communicate over the internet between systems
+💡 Example: Public APIs for weather, stock, etc.
+
+---
+
+ 🔗 Common API Protocols
+
+| Protocol | Format            | Description                               |
+| -------- | ----------------- | ----------------------------------------- |
+| REST     | JSON, XML         | Stateless, most widely used               |
+| SOAP     | XML               | Rigid structure, used in enterprises      |
+| GraphQL  | JSON              | Flexible queries                          |
+| gRPC     | Binary (Protobuf) | Fast & efficient, great for microservices |
+
+---
+
+ 🌍 RESTful APIs & HTTP
+
+🔁 REST (Representational State Transfer): Resource-based, stateless APIs
+
+> HTTP = Protocol used to send/receive data (websites & APIs)
+
+* Each request is independent
+* Common for web services
+
+---
+
+ 📡 Common HTTP Methods (CRUD)
+
+| Method   | Action     | Description             |
+| -------- | ---------- | ----------------------- |
+| `GET`    | 🟢 Read    | Fetch data              |
+| `POST`   | 🟡 Create  | Submit new data         |
+| `PUT`    | 🟠 Replace | Replace entire resource |
+| `PATCH`  | 🔵 Update  | Update specific fields  |
+| `DELETE` | 🔴 Delete  | Remove resource         |
+
+ 🔁 CRUD vs HTTP Methods
+
+| CRUD   | HTTP      | Purpose         | Example        |
+| ------ | --------- | --------------- | -------------- |
+| Create | POST      | Add resource    | Create user    |
+| Read   | GET       | Retrieve data   | Get book list  |
+| Update | PUT/PATCH | Modify data     | Update profile |
+| Delete | DELETE    | Remove resource | Delete product |
+
+---
+
+ 📊 HTTP Status Codes
+
+| Code Range | Meaning         | Examples                                                 |
+| ---------- | --------------- | -------------------------------------------------------- |
+| 2xx        | ✅ Success       | 200 OK, 201 Created, 204 No Content                      |
+| 3xx        | 🔁 Redirection  | 301 Moved Permanently                                    |
+| 4xx        | 🚫 Client Error | 400 Bad Request, 401 Unauthorized, 404 Not Found         |
+| 5xx        | 💥 Server Error | 500 Internal Error, 502 Bad Gateway, 504 Gateway Timeout |
+
+---
+
+ 🌐 API Endpoint Structure
+
+| Part     | Example                       |
+| -------- | ----------------------------- |
+| Protocol | `https://`                    |
+| Host     | `library-api.postmanlabs.com` |
+| Path     | `/books`                      |
+
+---
+
+ 🔄 Path Variables vs Query Parameters
+
+| Path Variable           | Query Parameter                         |
+| ----------------------- | --------------------------------------- |
+| `/books/abc123`         | `/books?search=borges&checkedOut=false` |
+| Appears in the URL path | Appears after `?` at end of URL         |
+| Used for IDs/names      | Used for filtering/searching            |
+
+---
+
+ 🧩 Query Parameters
+
+Used to customize API requests via key-value pairs.
+
+ ✍️ Syntax:
+
+?key=value&key2=value2
+
+ 📘 Example:
+
+GET https://api.com/photos?orientation=landscape&size=500x400
+
+> Try in browser:
+> `https://www.google.com/search?q=your+query`
+
+---
+
+ 🗃️ Path Variable Example
+
+GET /books/1a9bcaba-934a-45cc-8b03-88c0e0e5defb
+
+ 📝 Add Book (POST)
+
+Endpoint: `POST {{baseUrl}}/books`
+Auth Header:
+
+api-key: postmanrulz
+
+Body (raw JSON):
+json
+{
+  "title": "To Enwer",
+  "author": "Enwer Memet",
+  "genre": "Love",
+  "yearPublished": 2025
+}
+
+---
+
+ 🔐 Authentication in Postman
+
+ 🔒 Single Request
+
+* Go to Headers → Add `api-key: postmanrulz`
+
+ 🔒 Collection Level
+
+* Click Collection → Auth → Choose Type → Add key & value
+
+> Applies to all requests unless overridden
+
+---
+
+ 🧮 Variables in Postman
+
+ 🎯 Why use variables?
+
+* Reuse values (`baseUrl`)
+* Hide sensitive info (`api-key`)
+
+ 🗂 Scopes:
+
+| Scope       | Priority (low → high) |
+| ----------- | --------------------- |
+| Global      | 🔽 Lowest             |
+| Collection  |                       |
+| Environment |                       |
+| Data        |                       |
+| Local       | 🔼 Highest            |
+
+> Local overrides Global if both exist.
+
+---
+
+ 🧠 Setting a Variable
+
+1. Right-click on part of request (e.g. URL)
+2. Click “Set as variable”
+3. Name it & choose scope
+4. Modify in the “Variables” tab in your folder/collection
+
+---
+
+ 🔧 Scripting in Postman
+
+Automate actions with JavaScript during:
+
+* ⏱ Pre-request Script → Runs before sending request
+* 📬 Tests/Response Script → Runs after receiving response
+
+ How to Add:
+
+* Go to Collection or Folder
+* Select Scripts tab
+* Add code in Pre-request or Tests tab
+* Save
+
+ 🧰 Example:
+js
+console.log(pm.response.json())
+
+> View result in console (bottom left corner)
+
+---
+
+ 📤 Sharing a Collection
+
+1. Click Collection → Click Share
+2. Choose link, export, or team workspace
+3. Set visibility and access
+
