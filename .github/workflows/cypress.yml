@@ -1,21 +1,13 @@
-name: Cypress Tests
+name: Run Cypress Tests
 
-on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+on: [push, pull_request]
 
 jobs:
-  cypress-run:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -23,33 +15,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Cache node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v5
-        with:
-          build: npm run build || echo "no build step"
-          start: npm start || echo "no start step"
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 60
-          browser: chrome
-          # To run headless, add command below:
-          command: run --headless
-
-      - name: Upload Cypress artifacts (screenshots and videos)
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-artifacts
-          path: |
-            cypress/screenshots
-            cypress/videos
+      - name: Run Cypress tests headlessly
+        run: npx cypress run
